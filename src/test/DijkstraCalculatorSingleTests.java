@@ -12,36 +12,35 @@ import java.util.Map;
 
 import calculator.*;
 
-public class DijkstraAlgorithmCalculatorSingleTests {
+public class DijkstraCalculatorSingleTests {
 	
-	private static String className = DijkstraAlgorithmCalculatorSingle.class.getSimpleName();
+	private static String className = DijkstraCalculatorSingle.class.getSimpleName();
 	
 	private static void positiveTestConstructor (String testKey) {
 		System.out.println("Тест " + testKey);
 		Map <String, Double> map = TestHelper.testCases.get(testKey);
 		for (Map.Entry<String, Double> entry : map.entrySet()) {
-			System.out.print("\""+entry.getKey()+"\"= ");
+			System.out.print("\""+entry.getKey()+"\" ");
 			try {
 				String expression = entry.getKey();
-				expression = expression.replace(" ", "").replace("(-", "(0-").replace("(+", "(0+");
-				if (expression.charAt(0) == '-' || expression.charAt(0) == '+') {
-					  expression = "0" + expression;
-				}
+				String testStr = Double.toString(entry.getValue());
+				expression = DijkstraCalculatorSingle.prepareExpressionString(expression);
 			  
-				final char[] input = expression.toCharArray(); //{'(','1','+','1',')'};
+				final char[] input = expression.toCharArray();
 				
 				char[] output = new char[input.length];
 				
-				if(DijkstraAlgorithmCalculatorSingle.expressionParser(input, output)) {
-					if (DijkstraAlgorithmCalculatorSingle.expressionCalc(output)) {
-						
-						System.out.println("Результат: " + String.valueOf(output) + "=" + DijkstraAlgorithmCalculatorSingle.getResult());
+				if(DijkstraCalculatorSingle.expressionParser(input, output)) {
+					if (DijkstraCalculatorSingle.expressionCalc(output)) {
+						System.out.println("Результат: " + String.valueOf(output)
+							+ "=" + DijkstraCalculatorSingle.getResult()
+							+ "; Эталонное значение: " + testStr);
 					}
 					else {
 						System.out.println("Ошибка вычисления: " + String.valueOf(output));
 					}
 				}
-		    	assertEquals(entry.getValue(), DijkstraAlgorithmCalculatorSingle.getResult(), 0);
+		    	assertEquals(entry.getValue(), DijkstraCalculatorSingle.getResult(), 0);
 		    	
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
