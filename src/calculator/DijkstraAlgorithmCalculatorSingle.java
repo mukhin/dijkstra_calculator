@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class DijkstraAlgorithmCalculator {
+public class DijkstraAlgorithmCalculatorSingle {
 	
 	private static double result = 0.0; // Результат вычисления
 	
@@ -276,8 +276,8 @@ public class DijkstraAlgorithmCalculator {
 		char[] output = new char[input.length];
 		result = 0.0;
 		
-		if(DijkstraAlgorithmCalculator.expressionParser(input, output)) {
-			if (DijkstraAlgorithmCalculator.expressionCalc(output)) {
+		if(DijkstraAlgorithmCalculatorSingle.expressionParser(input, output)) {
+			if (DijkstraAlgorithmCalculatorSingle.expressionCalc(output)) {
 				System.out.println("Результат: " + String.valueOf(output) + "=" + result);
 			}
 			else {

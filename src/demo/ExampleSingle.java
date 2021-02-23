@@ -2,7 +2,7 @@ package demo;
 
 import calculator.*;
 
-public class Example1 {
+public class ExampleSingle {
 
 	public static void main(String[] args) {
 	  
@@ -17,12 +17,12 @@ public class Example1 {
 		
 		System.out.println("Исходное выражение: " + String.valueOf(input));
 	  
-		if(DijkstraAlgorithmCalculator.expressionParser(input, output)){
-			if (DijkstraAlgorithmCalculator.expressionCalc(output)) {
+		if(DijkstraAlgorithmCalculatorSingle.expressionParser(input, output)){
+			if (DijkstraAlgorithmCalculatorSingle.expressionCalc(output)) {
 				System.out.println("Результат: "
 						+ String.valueOf(output)
 						+ "="
-						+ DijkstraAlgorithmCalculator.getResult());
+						+ DijkstraAlgorithmCalculatorSingle.getResult());
 			}
 			else {
 				System.out.println("Ошибка вычисления: " + String.valueOf(output));

@@ -12,7 +12,9 @@ import java.util.Map;
 
 import calculator.*;
 
-public class DijkstraAlgorithmCalculatorTests {
+public class DijkstraAlgorithmCalculatorSingleTests {
+	
+	private static String className = DijkstraAlgorithmCalculatorSingle.class.getSimpleName();
 	
 	private static void positiveTestConstructor (String testKey) {
 		System.out.println("Тест " + testKey);
@@ -30,16 +32,16 @@ public class DijkstraAlgorithmCalculatorTests {
 				
 				char[] output = new char[input.length];
 				
-				if(DijkstraAlgorithmCalculator.expressionParser(input, output)) {
-					if (DijkstraAlgorithmCalculator.expressionCalc(output)) {
+				if(DijkstraAlgorithmCalculatorSingle.expressionParser(input, output)) {
+					if (DijkstraAlgorithmCalculatorSingle.expressionCalc(output)) {
 						
-						System.out.println("Результат: " + String.valueOf(output) + "=" + DijkstraAlgorithmCalculator.getResult());
+						System.out.println("Результат: " + String.valueOf(output) + "=" + DijkstraAlgorithmCalculatorSingle.getResult());
 					}
 					else {
 						System.out.println("Ошибка вычисления: " + String.valueOf(output));
 					}
 				}
-		    	assertEquals(entry.getValue(), DijkstraAlgorithmCalculator.getResult(), 0);
+		    	assertEquals(entry.getValue(), DijkstraAlgorithmCalculatorSingle.getResult(), 0);
 		    	
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -49,12 +51,12 @@ public class DijkstraAlgorithmCalculatorTests {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		System.out.println("\nТестирование класса DijkstraAlgorithmCalculator");
+		System.out.println("\nТестирование класса " + className);
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		System.out.println("Тестирование класса DijkstraAlgorithmCalculator окончено\n");
+		System.out.println("Тестирование класса " + className + " окончено\n");
 	}
 
 	@Before
